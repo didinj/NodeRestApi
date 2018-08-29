@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/products', products);
+app.use('/api/v1/products', products);
 
 var Category = app.resource = restful.model('category', mongoose.Schema({
   cat_name: String,
@@ -59,7 +59,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json(err.message);
 });
 
 module.exports = app;
