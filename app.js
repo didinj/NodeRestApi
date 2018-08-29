@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var restful = require('node-restful');
 var methodOverride = require('method-override');
+var cors = require('cors');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -33,6 +34,7 @@ app.use(methodOverride());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(cors());
 app.use('/', index);
 app.use('/users', users);
 app.use('/api/v1/products', products);
