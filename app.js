@@ -16,7 +16,7 @@ var app = express();
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/product')
+mongoose.connect('mongodb://localhost/product', {useNewUrlParser: true})
   .then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));
 
